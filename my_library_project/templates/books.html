@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <h1>Visita nuestra librería completa</h1>
+    {% for item in books %}
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{ item.title }}</div>
+                    <p>{{ item.author }}</p>
+                    <p>{{ item.pub_date }}</p>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'update_book' item.id %}">Editar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete' item.id %}">Eliminar</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_book' %}">Agregar uno nuevo</a></li>
+                    </ul>
+                </div>
+            </li>    
+        </ol>
+
+    {% endfor %}
+{% endblock %}

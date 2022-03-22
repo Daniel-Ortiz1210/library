@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <h1>Bienvenido, {% if user.is_authenticated %} {{ user.username }}{% endif %}</h1>
+    <H2>¿Qué desea hacer?</H2>
+    <ul>
+        <li><a href="{% url 'books' %}">Ver libros disponibles</a></li>
+        <li><a href="">Añadir un nuevo libro</a></li>
+    </ul>    
+{% endblock %}
+
